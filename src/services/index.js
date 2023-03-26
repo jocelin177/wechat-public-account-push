@@ -55,7 +55,7 @@ export const getAccessToken = async () => {
 
   try {
     const res = await axios.get(postUrl).catch((err) => err)
-    if (res.errcode === 0 && res.access_token) {
+    if (res.access_token) {
       accessToken = res.access_token
       console.log('---')
       console.log('获取 accessToken: 成功', res.data)
