@@ -51,7 +51,7 @@ export const getAccessToken = async () => {
   console.log('已获取appId', appId)
   console.log('已获取appSecret', appSecret)
 
-  const postUrl = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`
+  const postUrl = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wwdfde41908d999d6e&secret=nLOcu5R_du02pW6yQvt9PT3lEBfpOiqcXaMELrHRy78`
 
   try {
     const res = await axios.get(postUrl).catch((err) => err)
@@ -1033,13 +1033,15 @@ const sendMessageByWeChatTest = async (user, templateId, wxTemplateData) => {
     }
   }
 
-  const url = `https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=${accessToken}`
+  const url = `https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=${accessToken}`
   const data = {
-    touser: user.id,
-    template_id: templateId,
-    url: assembleOpenUrl(),
-    topcolor: '#FF0000',
-    data: wxTemplateData,
+    "touser" : "Zhangsi",
+    "msgtype" : "text",
+    "agentid" : 1000002,
+    "text" : {
+       "content" : "github-sendmsg-test"
+    },
+    "safe":0
   }
 
   // 发送消息
