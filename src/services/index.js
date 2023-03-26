@@ -50,12 +50,12 @@ export const getAccessToken = async () => {
 
   console.log('已获取appId', appId)
   console.log('已获取appSecret', appSecret)
-
+  
   const postUrl = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wwdfde41908d999d6e&secret=nLOcu5R_du02pW6yQvt9PT3lEBfpOiqcXaMELrHRy78`
 
   try {
     const res = await axios.get(postUrl).catch((err) => err)
-    if (res.status === 200 && res.data && res.data.access_token) {
+    if (res.errcode === 0 && res.access_token) {
       accessToken = res.data.access_token
       console.log('---')
       console.log('获取 accessToken: 成功', res.data)
